@@ -13,7 +13,9 @@ if (typeof window === 'object') {
       .then((adapter) => {
         fs.syncAdapter = adapter;
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.error('Failed to start FsaNodeSyncAdapterWorker:', err);
+      });
   }
 } else {
   const worker = new FsaNodeSyncWorker();
